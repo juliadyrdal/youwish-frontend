@@ -3,21 +3,24 @@
 import { TrashIcon, ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/outline'
 
 // Import stores
-import { useWishlistStore } from '@/stores/wishlistStore.js'
+import { useUiStore } from '@/stores/uiStore'
 
 // Access store
-const wishlistStore = useWishlistStore();
+const uiStore = useUiStore();
+
+// Make reactive
+const { modals } = storeToRefs(uiStore)
 
 // Destructure actions
-const { removeItem } = wishlistStore
+const { openModal } = uiStore
 
 // Declare props
 const props = defineProps(['item'])
 
-// Remove item from wishlist
-const handleRemoveItem = () => {
-    removeItem(props.item.id)
-}
+
+const handleOpenRemoveModal = () => {
+    openModal('removeItemModal');
+};
 </script>
 
 <template>
@@ -40,9 +43,17 @@ const handleRemoveItem = () => {
                     <NuxtLink :to="item.url" target="_blank">
                         <UiButtonTextIcon :icon="ArrowTopRightOnSquareIcon" text="View item" />
                     </NuxtLink>
-                    <UiButtonTextIcon :icon="TrashIcon" text="Remove item" :onClick="handleRemoveItem" />
+                    <UiButtonTextIcon :icon="TrashIcon" text="Remove item" :onClick="handleOpenRemoveModal" />
                 </nav>
                 <!--End Item utility nav-->
+
+                <!-- Remove item modal -->
+                <Teleport to="body">
+                    <div v-if="modals.removeItemModal">
+                        <UiModalRemoveItem :item="props.item"  />
+                    </div>
+                </Teleport>
+                <!-- End Remove item modal -->
 
             </div>
             <!--End Text content container-->
