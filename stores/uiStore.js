@@ -5,6 +5,7 @@ export const useUiStore = defineStore('ui', {
         // Visibility status of modals. Default set to not visible
         modals: {
             productModal: false,
+            removeItemModal: false,
         },
     }),
     actions: {

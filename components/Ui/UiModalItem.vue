@@ -57,7 +57,7 @@ const handleAddItem = () => {
             <div v-if="modals.productModal" class="relative">
 
                 <!--Dark modal background-->
-                <div class="bg-black/75 fixed top-0 right-0 left-0 z-20 h-screen">
+                <div class="bg-black/75 fixed top-0 right-0 left-0 z-20 h-screen"> 
                     <div class="relative top-12">
 
                         <!--Main modal content-->
