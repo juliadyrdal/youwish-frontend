@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      apiBaseUrl: 'http://localhost:3000/api',
+      apiBaseUrl: 'https://product-data-api.onrender.com/api',
     }
   }
 })
