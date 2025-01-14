@@ -12,13 +12,14 @@ const uiStore = useUiStore();
 const { modals } = storeToRefs(uiStore)
 
 // Destructure actions
-const { openModal } = uiStore
+const { openModal, setItemForRemoval } = uiStore
 
 // Declare props
 const props = defineProps(['item'])
 
 
 const handleOpenRemoveModal = () => {
+    setItemForRemoval(props.item);
     openModal('removeItemModal');
 };
 </script>
@@ -37,6 +38,7 @@ const handleOpenRemoveModal = () => {
             <div>
                 <h2 class="mb-2 font-semibold text-lg">{{ item.title }}</h2>
                 <p class="text-sm w-5/6">{{ item.description }}</p>
+                <p>{{ item.id }}</p>
 
                 <!--Item utility nav-->
                 <nav class="flex gap-10 mt-16">
@@ -46,14 +48,6 @@ const handleOpenRemoveModal = () => {
                     <UiButtonTextIcon :icon="TrashIcon" text="Remove item" :onClick="handleOpenRemoveModal" />
                 </nav>
                 <!--End Item utility nav-->
-
-                <!-- Remove item modal -->
-                <Teleport to="body">
-                    <div v-if="modals.removeItemModal">
-                        <UiModalRemoveItem :item="props.item"  />
-                    </div>
-                </Teleport>
-                <!-- End Remove item modal -->
 
             </div>
             <!--End Text content container-->

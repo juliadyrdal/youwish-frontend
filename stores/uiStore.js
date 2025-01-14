@@ -7,6 +7,7 @@ export const useUiStore = defineStore('ui', {
             productModal: false,
             removeItemModal: false,
         },
+        currentItemToRemove: null,
     }),
     actions: {
         // Open a modal by setting the value to true
@@ -16,6 +17,12 @@ export const useUiStore = defineStore('ui', {
         // Close a modal by setting the value to false
         closeModal(modalName) {
             this.modals[modalName] = false; // Speficy modal, i.e. 'productModal'
+        },
+        setItemForRemoval(item) {
+            this.currentItemToRemove = item;
+        },
+        clearItemForRemoval() {
+            this.currentItemToRemove = null;
         },
     },
 })

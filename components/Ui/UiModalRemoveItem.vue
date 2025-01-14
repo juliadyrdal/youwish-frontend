@@ -12,14 +12,16 @@ const uiStore = useUiStore()
 
 // Destructure actions
 const { removeItem } = wishlistStore
-const { closeModal } = uiStore 
+const { closeModal, clearItemForRemoval } = uiStore 
 
 // Declare props
 const props = defineProps(['item'])
 
 // Remove item from wishlist
 const handleRemoveItem = () => {
-    removeItem(props.item.id)
+    removeItem(props.item.id);
+    closeModal('removeItemModal');
+    clearItemForRemoval();
 }
 </script>
 
