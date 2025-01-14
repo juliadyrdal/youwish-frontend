@@ -38,7 +38,6 @@ const handleOpenRemoveModal = () => {
             <div>
                 <h2 class="mb-2 font-semibold text-lg">{{ item.title }}</h2>
                 <p class="text-sm w-5/6">{{ item.description }}</p>
-                <p>{{ item.id }}</p>
 
                 <!--Item utility nav-->
                 <nav class="flex gap-10 mt-16">

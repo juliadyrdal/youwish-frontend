@@ -5,11 +5,15 @@ export default function useFetchProduct() {
     // Ref to store potential errors
     const error = ref(null);
 
+    // Ref to store loading status
+    const loading = ref(false);
+
     // Access API base URL
     const { apiBaseUrl } = useRuntimeConfig().public
 
     // Fetch product metadata from URL
     async function fetchProduct(url) {
+        loading.value = true; 
         try {
           // Send GET request to the server api endpoint with URL as query parameter
           const res = await $fetch(`${apiBaseUrl}/meta`, {
@@ -25,8 +29,10 @@ export default function useFetchProduct() {
           console.error('Error fetching metadata:', err);
           // User friendly error
           error.value = 'Failed to fetch metadata'
+        } finally {
+          loading.value = false;
         }
 
       }
-      return { metadata, error, fetchProduct };
+      return { metadata, error, loading, fetchProduct };
 }

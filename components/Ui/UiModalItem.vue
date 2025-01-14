@@ -7,7 +7,7 @@ import { useUiStore } from '@/stores/uiStore.js'
 import { useWishlistStore } from '@/stores/wishlistStore.js'
 
 // Access composable
-const { metadata, fetchProduct } = useFetchProduct();
+const { metadata, loading, fetchProduct } = useFetchProduct();
 
 // Access store
 const uiStore = useUiStore()
@@ -74,12 +74,18 @@ const handleAddItem = () => {
                             <h1 class="font-medium text-lg">Add item</h1>
 
                             <!--Find product section-->
-                            <div class="flex flex-col gap-4">
+                            <div v-if="!loading && !metadata" class="flex flex-col gap-4">
                                 <label class="text-xs font-bold" for="productUrlInput">Paste product URL below</label>
                                 <input v-model="productUrl" class="w-4/6 py-2 px-4 rounded text-xs border border-slate-200" type="text" name="productUrlInput" placeholder="https://www.example.com">
                                 <UiButtonPrimary :onClick="handleFindProduct" text="Find product" />
                             </div>
                             <!--End Find product section-->
+
+                            <!--Loading indicator-->
+                            <div v-if="loading">
+                                Loading product data...
+                            </div>
+                            <!--End Loading indicator-->
 
                             <!--Section divider-->
                             <hr class="my-10">
