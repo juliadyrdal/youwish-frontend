@@ -24,7 +24,7 @@ const handleOpenRemoveModal = () => {
 };
 </script>
 
-<template>
+<template> 
 
     <!--Item article-->
     <div class="mx-[120px]">
