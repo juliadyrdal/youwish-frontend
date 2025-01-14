@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { uniqueId } from 'lodash-es';
+import { v4 as uuidv4 } from 'uuid';
 
 export const useWishlistStore = defineStore('wishlist', {
     state: () => ({
@@ -8,7 +9,7 @@ export const useWishlistStore = defineStore('wishlist', {
     actions: {
         addItem(item) {
             // Add unique id to item (with lodash)
-            item.id = uniqueId('item_');
+            item.id = uuidv4();
             // Add new item to items array/state
             this.items.unshift(item);
         },
