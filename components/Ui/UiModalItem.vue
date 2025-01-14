@@ -87,10 +87,6 @@ const handleAddItem = () => {
                             </div>
                             <!--End Loading indicator-->
 
-                            <!--Section divider-->
-                            <hr class="my-10">
-                            <!--End Section divider-->
-
                             <!--Add item section-->
                             <div v-if="metadata" class="flex flex-col gap-4">
                                 <h2 class="font-medium text-lg">{{ metadata.title }}</h2>
