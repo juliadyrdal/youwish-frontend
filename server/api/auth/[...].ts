@@ -3,7 +3,7 @@ import { NuxtAuthHandler } from '#auth'
 
 export default NuxtAuthHandler({
   // A secret string you define, to ensure correct encryption
-  secret: useRuntimeConfig().authSecret,
+  secret: useRuntimeConfig().private.authSecret,
   pages: {
     signIn: '/'
   },

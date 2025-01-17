@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   auth: {
     globalAppMiddleware: true,
     isEnabled: true,
-    originEnvKey: 'AUTH_ORIGIN',
+    //originEnvKey: 'AUTH_ORIGIN',
     baseURL: 'http://localhost:3001/api/auth',
     providers: {
       auth0: {
@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:3000/api',
+      apiBaseUrl: 'http://localhost:3000/api',
       auth: {
         origin: process.env.AUTH_ORIGIN,
       },
@@ -35,7 +35,8 @@ export default defineNuxtConfig({
       }
     },
     private: {
-      auth0ClientSecret: process.env.AUTH0_CLIENT_SECRET
+      auth0ClientSecret: process.env.AUTH0_CLIENT_SECRET,
+      authSecret: process.env.AUTH_SECRET,
     }
   }
 })
