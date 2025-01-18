@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.1.5",
-    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@nuxt/ui": "2.21.0",
     "@pinia/nuxt": "^0.5.5",
     "@sidebase/nuxt-auth": "0.10.0",
     "next-auth": "~4.21.1",
@@ -23,7 +23,6 @@
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.2",
     "nuxt-lodash": "^2.5.3"
   }
 }

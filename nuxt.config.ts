@@ -4,12 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
   modules: [
-    '@nuxtjs/tailwindcss',
     'nuxt-lodash',
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
-    '@sidebase/nuxt-auth'
+    '@sidebase/nuxt-auth',
+    '@nuxt/ui'
   ],
+  colorMode: {
+    preference: 'light'
+  },
   auth: {
     globalAppMiddleware: true,
     isEnabled: true,

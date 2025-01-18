@@ -9,11 +9,12 @@ const uiStore = useUiStore();
 
 // Make reactive
 const { items } = storeToRefs(wishlistStore)
+
+const { signOut, data } = useAuth()
 </script>
 
 <template>
     <div>
-
         <!--List of items-->
         <div v-if="items.length" class="mt-10">
             <ItemArticle v-for="item in items" :item="item" :key="item.id" />

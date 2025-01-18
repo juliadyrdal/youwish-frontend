@@ -5,7 +5,7 @@ export default NuxtAuthHandler({
   // A secret string you define, to ensure correct encryption
   secret: useRuntimeConfig().private.authSecret,
   pages: {
-    signIn: '/'
+    signIn: '/',
   },
   providers: [
     // @ts-expect-error Use .default here for it to work during SSR.
