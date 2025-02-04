@@ -1,25 +1,29 @@
 <script setup>
+// Import store
+import { useUiStore } from '@/stores/uiStore.js'
+
 definePageMeta({
-  layout: 'loggedout',
-  auth: { unauthenticatedOnly: true, navigateAuthenticatedTo: '/home' }
+  layout: 'loggedout', 
 })
 
-const { signIn } = useAuth()
-const handleSignUp = () => {
-    signIn('auth0')
-}
+// Access store
+const uiStore = useUiStore()
+
+// Make reactive
+const { signupState } = storeToRefs(uiStore)
+
 </script>
 
 <template>
     <div>
-        <!--Empty state-->
-        <div class="mx-[120px] mt-4 py-12 text-[#333] flex flex-col justify-center items-center">
-            <h1 class="mb-8 text-center text-lg">Sign up to you wish to start creating your wishlist</h1>
-        </div>
-        <!--End Empty state-->
+        <!--Sign up component-->
+        <SignUp v-if="signupState" />
 
-        <div class="flex justify-center">
-            <UiButtonPrimary :onClick="handleSignUp" text="Sign up" class="" />
+        <!--Log in component-->
+        <LogIn v-if="!signupState" />
+
+        <div class="flex justify-center mt-4">
+            <DemoUser />
         </div>
     </div>
 </template>

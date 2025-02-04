@@ -1,4 +1,4 @@
-<script setup>
+<script setup> 
 // Import Heroicons
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 
@@ -23,7 +23,7 @@ const { modals } = storeToRefs(uiStore)
 const { closeModal } = uiStore
 const { addItem } = wishlistStore
 
-// Hold the URL entered by user
+// Store the URL entered by user
 const productUrl = ref('')
 
 // Find product metadata by calling fetchProduct and passing entered URL
@@ -94,7 +94,7 @@ const handleAddItem = () => {
 
                             <!--Add item section-->
                             <div v-if="metadata" class="flex flex-col mt-4">
-                                <div class="flex">
+                                <div class="flex gap-6">
                                     <img class="h-72 rounded self-start" :src="metadata.image" alt="">
                                     <div class="mt-8">
                                         <h2 class="mb-2 font-semibold text-xl">{{ metadata.title }}</h2>

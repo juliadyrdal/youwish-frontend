@@ -1,7 +1,22 @@
 <script setup>
-const { signIn } = useAuth()
+// Import stores
+import { useUiStore } from '@/stores/uiStore.js'
+
+
+
+// Access store
+const uiStore = useUiStore()
+
+// Make reactive
+const { signupState } = storeToRefs(uiStore)
+
+const router = useRouter()
+
 const handleLogIn = () => {
-    signIn('auth0')
+    // Change signupState so LogIn component is shown
+    signupState.value = false
+    // Redirect to /
+    router.push('/')
 }
 </script>
 

@@ -1,7 +1,13 @@
 <script setup>
+// Import composable for authentication
+import { useAuth } from '@/composables/useAuth';
+
 // Import stores
 import { useWishlistStore } from '@/stores/wishlistStore.js'
 import { useUiStore } from '@/stores/uiStore.js'
+
+// Access composable
+const { user } = useAuth();
 
 // Access store
 const wishlistStore = useWishlistStore();
@@ -10,7 +16,11 @@ const uiStore = useUiStore();
 // Make reactive
 const { items } = storeToRefs(wishlistStore)
 
-const { signOut, data } = useAuth()
+// Fetch wishlist items
+onMounted(() => {
+    wishlistStore.fetchWishlist()
+})
+
 </script>
 
 <template>

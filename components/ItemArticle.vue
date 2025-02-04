@@ -17,7 +17,7 @@ const { openModal, setItemForRemoval } = uiStore
 // Declare props
 const props = defineProps(['item'])
 
-
+// Open modal and pass item to be removed
 const handleOpenRemoveModal = () => {
     setItemForRemoval(props.item);
     openModal('removeItemModal');

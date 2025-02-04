@@ -1,15 +1,34 @@
 <script setup>
-// Import from useAuth composable
-const { signOut, data } = useAuth()
+// Import stores
+import { useWishlistStore } from '@/stores/wishlistStore'
+import { useUserProfileStore } from '@/stores/userProfileStore'
+
+// Access stores
+const wishlistStore = useWishlistStore()
+const userProfileStore = useUserProfileStore()
 
 const router = useRouter()
+const supabase = useSupabaseClient()
+
+// Log out from Supabase, reset stores, and redirect to home
+const signOut = async () => {
+  const { error } = await supabase.auth.signOut()
+  if (error) console.log(error)
+  if(!error) {
+    // Reset Pinia stores upon successful sign out
+    wishlistStore.$reset()
+    userProfileStore.$reset()
+    // Redirect to landing page
+    router.push('/')
+  }
+}
 
 // Dropdown menu items
 const items = [
   [{
     label: 'Profile',
     icon: 'i-heroicons-user-circle',
-    //click: () => router.push('/profile')
+    click: () => router.push('/profile')
   }], [{
     label: 'My wishlists',
     icon: 'i-heroicons-shopping-bag'
@@ -17,7 +36,7 @@ const items = [
     label: 'Log out',
     icon: 'i-heroicons-arrow-left-on-rectangle',
     click: () => {
-      signOut({ callbackUrl: '/' })
+      signOut()
     }
   }]
 ]
@@ -28,8 +47,7 @@ const items = [
 
     <!--Dropdown button-->
     <UAvatar
-        :src="data.user.image"
-        :alt="data.user.name"
+       
     />
     <!--End Dropdown button-->
 
