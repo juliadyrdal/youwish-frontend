@@ -9,6 +9,6 @@ const props = defineProps({
 
 <template>
     <div>
-        <button @click="onClick" class="rounded text-sm font-bold bg-slate-200 py-2 px-4">{{ text }}</button>
+        <button @click="onClick" class="rounded text-sm font-bold bg-[#F2F2F2] py-2 px-4">{{ text }}</button>
     </div>
 </template>

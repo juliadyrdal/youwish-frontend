@@ -13,8 +13,13 @@ const { openModal } = uiStore
 
     <!--Navbar-->
     <nav class="flex justify-between mx-[120px] py-4 text-[#333]">
-        <h1 class="text-2xl font-bold">you wish.</h1>
-        <UiButtonPrimary :onClick="() => openModal('productModal')" text="Add new item" />
+        <NuxtLink to="/home"><span class="text-2xl font-bold">you wish.</span></NuxtLink>
+
+        <div class="flex gap-2">
+            <UiButtonPrimary :onClick="() => openModal('productModal')" text="Add new item" />
+            <UiProfileDropDown />
+        </div>
+
     </nav>
     <!--End Navbar-->
 

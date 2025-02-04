@@ -19,7 +19,7 @@ const props = defineProps(['item'])
 
 // Remove item from wishlist
 const handleRemoveItem = () => {
-    removeItem(props.item.id);
+    removeItem(props.item._id);
     closeModal('removeItemModal');
     clearItemForRemoval();
 }
